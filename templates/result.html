@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASUR Prediction Result</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #0F2027, #203A43, #2C5364);
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #FFFFFF; /* White text */
+            font-size: 2.5rem; /* Larger heading size */
+            margin-bottom: 20px; /* Added spacing */
+        }
+
+        .result-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #1E2A38; /* Dark blue result background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center vertically */
+            align-items: center; /* Center horizontally */
+            height: 300px; /* Adjust height based on content */
+        }
+
+        .result-text {
+            margin-bottom: 15px; /* Reduced margin */
+            font-size: 1.2rem; /* Larger text size */
+            line-height: 1.6; /* Improved readability */
+            text-align: center; /* Center text horizontally */
+        }
+
+        a {
+            display: block;
+            color: #FFFFFF;
+            text-decoration: none;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1rem; /* Slightly smaller font size */
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>ASUR Prediction Result</h1>
+    <div class="result-container">
+        <p class="result-text">{{ prediction_text }}</p>
+        {% if accuracy_text %}
+        <p class="result-text">{{ accuracy_text }}</p>
+        {% endif %}
+        <a href="/">Back to Prediction</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASUR Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0F2027, #203A43, #2C5364);
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        select, input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #333;
+            background-color: #fff;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        input[type="submit"]:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>ASUR Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="character">Character:</label>
+        <select id="character" name="character" required>
+            <option value="">Select Character</option>
+            <option value="Dhananjay Rajput">Dhananjay Rajput</option>
+            <option value="Nikhil Nair">Nikhil Nair</option>
+            <option value="Lolark Dubey">Lolark Dubey</option>
+            <option value="Rasool">Rasool</option>
+            <option value="Rhea">Rhea</option>
+        </select><br><br>
+        
+        <label for="time_of_day">Time of Day:</label>
+        <select id="time_of_day" name="time_of_day" required>
+            <option value="">Select Time of Day</option>
+            <option value="Morning">Morning</option>
+            <option value="Afternoon">Afternoon</option>
+            <option value="Night">Night</option>
+        </select><br><br>
+        
+        <label for="location">Location:</label>
+        <select id="location" name="location" required>
+            <option value="">Select Location</option>
+            <option value="Office">Office</option>
+            <option value="Lab">Lab</option>
+            <option value="Home">Home</option>
+        </select><br><br>
+        
+        <label for="previous_action">Previous Action:</label>
+        <select id="previous_action" name="previous_action" required>
+            <option value="">Select Previous Action</option>
+            <option value="Research">Research</option>
+            <option value="Meeting">Meeting</option>
+            <option value="Sleeping">Sleeping</option>
+            <option value="Observing">Observing</option>
+            <option value="Reading">Reading</option>
+            <option value="Experimenting">Experimenting</option>
+            <option value="Testing">Testing</option>
+        </select><br><br>
+        
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
