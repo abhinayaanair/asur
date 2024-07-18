@@ -15,6 +15,7 @@ try:
     time_encoder = joblib.load('time_encoder.pkl')
     location_encoder = joblib.load('location_encoder.pkl')
     prev_action_encoder = joblib.load('prev_action_encoder.pkl')
+    next_action_encoder = joblib.load('next_action_encoder.pkl')
     clf = joblib.load('decision_tree_model.pkl')
     logging.info("Model and encoders loaded successfully.")
 except Exception as e:
@@ -48,7 +49,8 @@ def predict():
         input_data['Previous_Action'] = prev_action_encoder.transform(input_data['Previous_Action'])
 
         # Predict the next action
-        prediction = clf.predict(input_data)[0]
+        prediction_encoded = clf.predict(input_data)[0]
+        prediction = next_action_encoder.inverse_transform([prediction_encoded])[0]
         prediction_text = f'Predicted Next Action: {prediction}'
 
         # Calculate the accuracy (for simplicity, using some dummy data)
@@ -56,6 +58,7 @@ def predict():
         times_of_day = ['Night', 'Morning', 'Afternoon'] * 8 + ['Night']
         locations = ['Lab', 'Office', 'Home'] * 8 + ['Lab']
         previous_actions = ['Research', 'Meeting', 'Sleeping', 'Observing', 'Reading'] * 5
+        next_actions = ['Call Nikhil', 'Analyze Data', 'Discuss Findings', 'Call Dhananjay', 'Observe Suspect'] * 5
 
         X = pd.DataFrame({
             'Character': character_encoder.transform(characters),
@@ -63,8 +66,9 @@ def predict():
             'Location': location_encoder.transform(locations),
             'Previous_Action': prev_action_encoder.transform(previous_actions)
         })
-        y = clf.predict(X)
-        accuracy = (y == y).mean()  # Dummy accuracy calculation for illustration
+        y = next_action_encoder.transform(next_actions)
+        y_pred = clf.predict(X)
+        accuracy = (y == y_pred).mean()  # Actual accuracy calculation
         accuracy_text = f'Accuracy: {accuracy * 100:.2f}%'
 
         return render_template('result.html', prediction_text=prediction_text, accuracy_text=accuracy_text)
