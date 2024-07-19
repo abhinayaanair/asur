@@ -34,7 +34,7 @@
         }
 
         .result-text {
-            margin-bottom: 15px; /* Reduced margin */
+            margin-bottom: 3px; /* Reduced margin */
             font-size: 1.2rem; /* Larger text size */
             line-height: 1.6; /* Improved readability */
             text-align: center; /* Center text horizontally */
@@ -52,14 +52,22 @@
         a:hover {
             text-decoration: underline;
         }
+
+        .prediction_text{
+            margin-bottom: 15px; /* Reduced margin */
+            font-size: 1.2rem; /* Larger text size */
+            line-height: 1.6; /* Improved readability */
+            text-align: center; /* Center text horizontally */
+            color:red;
+        }
     </style>
 </head>
 <body>
     <h1>ASUR Prediction Result</h1>
     <div class="result-container">
-        <p class="result-text">{{ prediction_text }}</p>
+        <p class="result-text">Predicted Next Action:<p class="prediction_text"> {{ prediction_text }}</p>
         {% if accuracy_text %}
-        <p class="result-text">{{ accuracy_text }}</p>
+       
         {% endif %}
         <a href="/">Back to Prediction</a>
     </div>

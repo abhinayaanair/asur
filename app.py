@@ -52,7 +52,7 @@ def predict():
         # Predict the next action
         prediction_encoded = clf.predict(input_data)[0]
         prediction = next_action_encoder.inverse_transform([prediction_encoded])[0]
-        prediction_text = f'Predicted Next Action: {prediction}'
+        prediction_text = f'{prediction}'
 
         # Generate a random accuracy between 1 and 80
         accuracy = random.uniform(1, 80)
